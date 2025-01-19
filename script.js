@@ -2,8 +2,15 @@
 
 const ulTodo = document.querySelector('.todo__list');
 const btnAddTodo = document.querySelector('.todo__btn');
-btnAddTodo.addEventListener('click', () => {
 
+ulTodo.addEventListener('click', (event) => {
+    if (event.target.tagName === 'BUTTON') {
+        event.target.parentElement.remove();
+    }
+})
+
+btnAddTodo.addEventListener('click', (event) => {
+    event.preventDefault();
     const inputTodo = document.querySelector('.todo__input')
     const inputTodoValue = inputTodo.value.trim();
 
@@ -23,12 +30,6 @@ btnAddTodo.addEventListener('click', () => {
     // });
 
     inputTodo.value = '';
-
-    ulTodo.addEventListener('click', (event) => {
-        if (event.target.tagName === 'BUTTON') {
-            event.target.parentElement.remove();
-        }
-    })
 
 })
 
